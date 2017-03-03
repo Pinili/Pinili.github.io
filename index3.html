@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Geog 483 Leaflet Tutorial</title>
+	<!-- This tutorial is based on the official Leaflet quickstart: http://leafletjs.com/examples/quick-start/ -->
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+
+</head>
+<body>
+<style>
+	body {
+		margin:0;
+		padding:0;
+	}
+	#mapid {
+		position:absolute;
+		top:100px;
+		bottom:0px;
+		left:0px;
+		width:100%;
+		height:80%;
+	}
+	h1 {
+		font-family: Verdana, Geneva, sans-serif;
+		text-align: center;
+	}
+	p {
+		text-align: right;
+	}
+</style>
+<h1>GEOG 483 Assignment 3 Task 3</h1>
+<p><i>Created by Justin Baradi</i></p>
+<div id="mapid"></div>
+<script>
+	var mymap = L.map('mapid').setView([43.470, -80.527], 16);
+
+	L.tileLayer("http://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '
+	}).addTo(mymap);
+
+		var watpark = {
+	  "type": "FeatureCollection",
+	  "features": [
+		{
+		  "type": "Feature",
+		  "properties": {
+			"stroke": "#555555",
+			"stroke-width": 2,
+			"stroke-opacity": 1,
+			"fill": "#555555",
+			"fill-opacity": 0.5,
+			"name": "MacGregor Public School Boundaries"
+		  },
+		  "geometry": {
+			"type": "Polygon",
+			"coordinates": [
+			  [
+				[
+				  -80.52383333444595,
+				  43.469800033159515
+				],
+				[
+				  -80.52377164363861,
+				  43.46982923183112
+				],
+				[
+				  -80.52402913570403,
+				  43.47113342477618
+				],
+				[
+				  -80.52462726831436,
+				  43.471076975216484
+				],
+				[
+				  -80.52485793828964,
+				  43.47149353279537
+				],
+				[
+				  -80.52510738372803,
+				  43.47140204609651
+				],
+				[
+				  -80.5251395702362,
+				  43.47145265577682
+				],
+				[
+				  -80.52585303783417,
+				  43.471219072283326
+				],
+				[
+				  -80.52579671144485,
+				  43.47112369209723
+				],
+				[
+				  -80.52724778652191,
+				  43.4706020182123
+				],
+				[
+				  -80.52710562944412,
+				  43.47031587428106
+				],
+				[
+				  -80.52712440490723,
+				  43.47019713388467
+				],
+				[
+				  -80.52383333444595,
+				  43.469800033159515
+				]
+			  ]
+			]
+		  }
+		},
+		{
+		  "type": "Feature",
+		  "properties": {
+			"marker-color": "#7e7e7e",
+			"marker-size": "medium",
+			"marker-symbol": "",
+			"name": "University Stadium"
+		  },
+		  "geometry": {
+			"type": "Point",
+			"coordinates": [
+			  -80.53008556365967,
+			  43.470300301783354
+			]
+		  }
+		},
+		{
+		  "type": "Feature",
+		  "properties": {
+			"stroke": "#555555",
+			"stroke-width": 4,
+			"stroke-opacity": 1,
+			"name": "Bricker Avenue"
+		  },
+		  "geometry": {
+			"type": "LineString",
+			"coordinates": [
+			  [
+				-80.5243456363678,
+				43.473181145570656
+			  ],
+			  [
+				-80.52698493003845,
+				43.4722624048982
+			  ],
+			  [
+				-80.52915215492249,
+				43.47146044187773
+			  ]
+			]
+		  }
+		},
+		{
+		  "type": "Feature",
+		  "properties": {
+			"stroke": "#555555",
+			"stroke-width": 4,
+			"stroke-opacity": 1,
+			"name": "Ezra Avenue"
+		  },
+		  "geometry": {
+			"type": "LineString",
+			"coordinates": [
+			  [
+				-80.52836894989014,
+				43.47075968877918
+			  ],
+			  [
+				-80.52633047103882,
+				43.47148380017441
+			  ],
+			  [
+				-80.5241847038269,
+				43.47225461890062
+			  ]
+			]
+		  }
+		}
+	  ]
+	};
+
+L.geoJson( watpark,{ 
+ 	style: function (feature) {
+        return { opacity: 100, fillOpacity: 0.60, fillColor: "#555555", color: "#000000" };
+    }
+}).addTo(mymap);
+</script>
+</body>
+</html>

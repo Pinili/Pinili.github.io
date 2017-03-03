@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Geog 483 Leaflet Tutorial</title>
+	<!-- This tutorial is based on the official Leaflet quickstart: http://leafletjs.com/examples/quick-start/ -->
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+
+</head>
+<body>
+<style>
+	body {
+		margin:0;
+		padding:0;
+	}
+	#mapid {
+		position:absolute;
+		top:100px;
+		bottom:0px;
+		left:0px;
+		width:100%;
+		height:80%;
+	}
+	h1 {
+		font-family: Verdana, Geneva, sans-serif;
+		text-align: center;
+	}
+	p {
+		text-align: right;
+	}
+</style>
+<h1>GEOG 483 Assignment 3 Task 4</h1>
+<p><i>Created by Justin Baradi</i></p>
+<div id="mapid"></div>
+<script src="coffeeshop.geoJson" type="text/javascript"></script>
+<script type='text/javascript'>
+	var mymap = L.map('mapid').setView([43.470823, -80.544799], 15);
+
+	L.tileLayer("http://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '
+	}).addTo(mymap);
+
+	function onEachFeature(feature, layer) {
+    if (feature.properties) {
+        layer.bindPopup("<b>" + feature.properties.name + "</b> is located at " + feature.geometry.coordinates + "  lat/long.");
+    }
+	}
+	var coffeepoints = new L.geoJson(coffeepoints, {
+		onEachFeature: onEachFeature
+	}).addTo(mymap);
+</script>
+</body>
+</html>
